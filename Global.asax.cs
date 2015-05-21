@@ -22,6 +22,8 @@ namespace DotNetOracleLogger
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // TODO: response as json format.
         }
     }
 }
