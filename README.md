@@ -44,18 +44,29 @@ table schema 在 log4net.config 裡
 parameter 要與 commandText 裡的名稱、數量一樣，要不會無法寫入
 可以安裝 Google Extension: Postman 做為測試
 
+
+
 ## Test step
 * run the proejct
 * Post a message to .../api/logs in Postman, example: Post to http://localhost:59115/api/logs/ with data: { logger: "Appantasy.com", message: "Arthur" } in JSON formate
 * check Table, there will be two records, one is for normal info, Arthur and Appantasy.com, another is an exception loggin sample
-* 
 
 因為我新增了 LogsController，稍微修改 Post 函式 接入參數為 LogRequestMessage
 所以用 postman POST 的資料，JSON 格式要對，要不會有錯
 
 
+
 ## Note
-* bufferSize has been modifed as a general number in log4net.config, like 125
+* bufferSize has been modifed as a general number in log4net.config, like 128
 
 請根據自家系統判斷 bufferSize，其定義是當 log 累積數量到達 bufferSize 設定數量時，就會寫入資料庫
 這問題也是搞了我很久!!!!!!
+因為一開始設定 128，結果發現資料庫沒有資料，以為沒有設定成功
+其實是因為還沒到達 bufferSize !
+
+
+## Reference
+* http://stackoverflow.com/questions/1057464/log4net-doesnt-log-or-error Debug mode
+* https://decoding.wordpress.com/2008/07/13/using-log4net-with-oracle-10g/  VB Sample
+* http://blog.csdn.net/kkkkkxiaofei/article/details/12946913 sample
+* http://www.programering.com/a/MTM5ADMwATc.html C# sample
